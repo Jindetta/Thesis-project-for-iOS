@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D052E07A249761DC004FABB7 /* MNISTClassifier.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = D052E079249761DC004FABB7 /* MNISTClassifier.mlmodel */; };
 		D05E63A02400195D00E22079 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05E639F2400195D00E22079 /* AppDelegate.swift */; };
 		D05E63A22400195D00E22079 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05E63A12400195D00E22079 /* SceneDelegate.swift */; };
 		D05E63A42400195D00E22079 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05E63A32400195D00E22079 /* ViewController.swift */; };
@@ -27,6 +28,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D052E079249761DC004FABB7 /* MNISTClassifier.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; name = MNISTClassifier.mlmodel; path = ../../../../../Downloads/MNISTClassifier.mlmodel; sourceTree = "<group>"; };
 		D05E639C2400195D00E22079 /* Thesis-project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Thesis-project.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D05E639F2400195D00E22079 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D05E63A12400195D00E22079 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -79,6 +81,7 @@
 		D05E639E2400195D00E22079 /* Thesis-project */ = {
 			isa = PBXGroup;
 			children = (
+				D052E079249761DC004FABB7 /* MNISTClassifier.mlmodel */,
 				D05E639F2400195D00E22079 /* AppDelegate.swift */,
 				D05E63A12400195D00E22079 /* SceneDelegate.swift */,
 				D05E63A32400195D00E22079 /* ViewController.swift */,
@@ -203,6 +206,7 @@
 				D05E63A42400195D00E22079 /* ViewController.swift in Sources */,
 				D05E63A02400195D00E22079 /* AppDelegate.swift in Sources */,
 				D05E63A22400195D00E22079 /* SceneDelegate.swift in Sources */,
+				D052E07A249761DC004FABB7 /* MNISTClassifier.mlmodel in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
