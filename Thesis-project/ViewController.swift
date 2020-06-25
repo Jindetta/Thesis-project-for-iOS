@@ -43,11 +43,11 @@ class ViewController: UIViewController {
     }
     
     // MARK: Event handlers
-
+    
     @IBAction func onClassifyClicked(_ sender: Any) {
-        if let image = drawingComponent.image?.cgImage {
+        if let image = convertCurrentImage() {
             DispatchQueue.global(qos:.userInitiated).async {
-                let handler = VNImageRequestHandler(cgImage: image, orientation: CGImagePropertyOrientation.up)
+                let handler = VNImageRequestHandler(ciImage: image, orientation: CGImagePropertyOrientation.up)
                 
                 do {
                     try handler.perform([self.classificationRequest])
@@ -68,11 +68,24 @@ class ViewController: UIViewController {
     private func updateView(_ results: VNClassificationObservation?) {
         DispatchQueue.main.async {
             if let resultData = results {
-                self.infoComponent.text = "TODO: Show classification data"
+                self.infoComponent.text = String(format: "Classification: %.3f - Result: %@", resultData.confidence,  resultData.identifier)
             } else {
                 self.infoComponent.text = "Classification: N/A - Result: N/A"
             }
         }
+    }
+    
+    private func convertCurrentImage() -> CIImage? {
+        UIGraphicsBeginImageContextWithOptions(CGSize(width: 28, height: 28), false, 1.0)
+        drawingComponent.image?.draw(in: CGRect(x: 0, y: 0, width: 28, height: 28))
+        let scaledImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        guard let cgImage = scaledImage?.cgImage else {
+            return nil
+        }
+        
+        return CIImage(cgImage: cgImage).applyingFilter("CIColorInvert")
     }
     
     private func drawLineFrom(fromPoint: CGPoint, toPoint: CGPoint) {
