@@ -7,107 +7,44 @@
 //
 
 import UIKit
-import Vision
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, ClassificationResultListener {
     
-    var lastPoint = CGPoint.init()
-    var brushColor = CGColor.init(srgbRed: 0, green: 0, blue: 0, alpha: 1)
-    var brushWidth: CGFloat = 25.0
+    let digitClassifier = DigitClassifier()
     
-    private lazy var classificationRequest: VNCoreMLRequest = {
-        let model = try! VNCoreMLModel(for: MNISTClassifier().model)
-        
-        return VNCoreMLRequest(model: model, completionHandler:{request, error in
-            self.updateView((request.results as? [VNClassificationObservation])?.first)
-        })
-    }()
-    
-    @IBOutlet weak var drawingComponent: UIImageView!
+    @IBOutlet weak var drawingComponent: DrawableView!
     @IBOutlet weak var infoComponent: UILabel!
     
-    // MARK: Overrides
+    // MARK: Overridden functions
     
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        if let touch = touches.first {
-            lastPoint = touch.location(in: drawingComponent)
-        }
+    override func viewDidLoad() {
+        digitClassifier.classificationResultDelegate = self
     }
     
-    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-        if let touch = touches.first {
-            let currentPoint = touch.location(in: drawingComponent)
-            drawLineFrom(fromPoint: lastPoint, toPoint: currentPoint)
-            lastPoint = currentPoint
-        }
-    }
-    
-    // MARK: Event handlers
+    // MARK: Storyboard event handlers
     
     @IBAction func onClassifyClicked(_ sender: Any) {
-        if let image = convertCurrentImage() {
-            DispatchQueue.global(qos:.userInitiated).async {
-                let handler = VNImageRequestHandler(ciImage: image, orientation: CGImagePropertyOrientation.up)
-                
-                do {
-                    try handler.perform([self.classificationRequest])
-                } catch {
-                    self.updateView(nil)
-                }
+        if !drawingComponent.isEmptyCanvas() {
+            if let image = drawingComponent.getCurrentImage() {
+                digitClassifier.classify(image: image.applyingFilter("CIColorInvert"))
             }
         }
     }
     
     @IBAction func onClearClicked(_ sender: Any) {
         drawingComponent.image = nil
-        updateView(nil)
+        OnClassificationReceived(classification: nil)
     }
     
-    // MARK: Private functions
+    // MARK: ClassificationResultListener implementation
     
-    private func updateView(_ results: VNClassificationObservation?) {
+    func OnClassificationReceived(classification: DigitClassifier.Classification?) {
         DispatchQueue.main.async {
-            if let resultData = results {
-                self.infoComponent.text = String(format: "Classification: %.3f - Result: %@", resultData.confidence,  resultData.identifier)
+            if let results = classification {
+                self.infoComponent.text = String(format: "Classification: %.3f - Result: %@", results.confidence,  results.result)
             } else {
                 self.infoComponent.text = "Classification: N/A - Result: N/A"
             }
         }
     }
-    
-    private func convertCurrentImage() -> CIImage? {
-        UIGraphicsBeginImageContextWithOptions(CGSize(width: 28, height: 28), false, 1.0)
-        drawingComponent.image?.draw(in: CGRect(x: 0, y: 0, width: 28, height: 28))
-        let scaledImage = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        
-        guard let cgImage = scaledImage?.cgImage else {
-            return nil
-        }
-        
-        return CIImage(cgImage: cgImage).applyingFilter("CIColorInvert")
-    }
-    
-    private func drawLineFrom(fromPoint: CGPoint, toPoint: CGPoint) {
-        UIGraphicsBeginImageContext(drawingComponent.frame.size)
-        if let context = UIGraphicsGetCurrentContext() {
-            drawingComponent.image?.draw(in: CGRect(x: 0, y: 0, width: drawingComponent.frame.size.width, height: drawingComponent.frame.size.height))
-            
-            context.move(to: fromPoint)
-            context.addLine(to: toPoint)
-        
-            context.setLineCap(CGLineCap.round)
-            context.setLineWidth(brushWidth)
-            
-            context.setStrokeColor(brushColor)
-            context.setBlendMode(CGBlendMode.normal)
-        
-            context.strokePath()
-            
-            drawingComponent.image = UIGraphicsGetImageFromCurrentImageContext()
-            drawingComponent.alpha = brushColor.alpha
-        }
-        UIGraphicsEndImageContext()
-    }
 }
-

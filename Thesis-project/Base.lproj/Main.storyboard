@@ -15,7 +15,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Qdc-hE-ay7">
+                            <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Qdc-hE-ay7" customClass="DrawableView" customModule="Thesis_project" customModuleProvider="target">
                                 <rect key="frame" x="67" y="308" width="280" height="280"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -26,7 +26,7 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FEG-HV-LFO">
                                 <rect key="frame" x="20" y="797" width="137" height="28"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="137" id="HSx-JD-Ju7"/>
+                                    <constraint firstAttribute="width" constant="137" id="YZA-vR-i4g"/>
                                 </constraints>
                                 <state key="normal" title="Start classification"/>
                                 <connections>
@@ -36,8 +36,8 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cWt-ZX-26v">
                                 <rect key="frame" x="257" y="797" width="137" height="28"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="137" id="9vS-20-gB5"/>
-                                    <constraint firstAttribute="height" constant="28" id="hwR-qm-4Jo"/>
+                                    <constraint firstAttribute="width" constant="137" id="FBR-j8-h10"/>
+                                    <constraint firstAttribute="height" constant="28" id="bJH-q2-NDM"/>
                                 </constraints>
                                 <state key="normal" title="Clear drawing"/>
                                 <connections>
@@ -54,17 +54,17 @@
                         <color key="backgroundColor" systemColor="systemGrayColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="l0A-yN-kg3" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="1qG-zV-Ya5"/>
-                            <constraint firstItem="cWt-ZX-26v" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="Fsd-wX-GRJ"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="cWt-ZX-26v" secondAttribute="bottom" constant="37" id="7y5-zo-Hbu"/>
+                            <constraint firstItem="cWt-ZX-26v" firstAttribute="baseline" secondItem="FEG-HV-LFO" secondAttribute="firstBaseline" id="DtA-Fb-S9x"/>
+                            <constraint firstItem="cWt-ZX-26v" firstAttribute="top" secondItem="FEG-HV-LFO" secondAttribute="top" id="Gw3-Fe-OP6"/>
                             <constraint firstItem="Qdc-hE-ay7" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="KNm-iJ-t8d"/>
-                            <constraint firstItem="FEG-HV-LFO" firstAttribute="top" secondItem="cWt-ZX-26v" secondAttribute="top" id="ZhC-4g-fS9"/>
+                            <constraint firstItem="cWt-ZX-26v" firstAttribute="firstBaseline" secondItem="FEG-HV-LFO" secondAttribute="baseline" id="d5D-HT-q2P"/>
                             <constraint firstItem="Qdc-hE-ay7" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="fNW-eP-7He"/>
-                            <constraint firstItem="FEG-HV-LFO" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="kNP-c9-W4n"/>
+                            <constraint firstItem="FEG-HV-LFO" firstAttribute="leading" secondItem="l0A-yN-kg3" secondAttribute="leading" id="lHM-X8-Rgu"/>
                             <constraint firstItem="Qdc-hE-ay7" firstAttribute="top" secondItem="l0A-yN-kg3" secondAttribute="bottom" constant="8" id="njM-df-8sX"/>
-                            <constraint firstItem="FEG-HV-LFO" firstAttribute="baseline" secondItem="cWt-ZX-26v" secondAttribute="firstBaseline" id="o9d-iC-uuF"/>
                             <constraint firstItem="Qdc-hE-ay7" firstAttribute="top" secondItem="l0A-yN-kg3" secondAttribute="bottom" constant="8" id="on1-WA-Ghf"/>
-                            <constraint firstItem="FEG-HV-LFO" firstAttribute="firstBaseline" secondItem="cWt-ZX-26v" secondAttribute="baseline" id="rC3-hy-zcZ"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="l0A-yN-kg3" secondAttribute="trailing" constant="20" id="sXe-QY-kfd"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="cWt-ZX-26v" secondAttribute="bottom" constant="37" id="vNz-Vt-aJg"/>
+                            <constraint firstItem="cWt-ZX-26v" firstAttribute="trailing" secondItem="l0A-yN-kg3" secondAttribute="trailing" id="tr6-oB-BNq"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
