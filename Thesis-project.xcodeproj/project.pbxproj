@@ -15,6 +15,8 @@
 		D05E63A92400195F00E22079 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D05E63A82400195F00E22079 /* Assets.xcassets */; };
 		D05E63AC2400195F00E22079 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D05E63AA2400195F00E22079 /* LaunchScreen.storyboard */; };
 		D05E63B72400196000E22079 /* Thesis_projectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05E63B62400196000E22079 /* Thesis_projectTests.swift */; };
+		D0B3A6C624B5CE7C00712482 /* DrawableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B3A6C524B5CE7C00712482 /* DrawableView.swift */; };
+		D0B3A6C824B5D39200712482 /* DigitClassifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B3A6C724B5D39200712482 /* DigitClassifier.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +42,8 @@
 		D05E63B22400196000E22079 /* Thesis-projectTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Thesis-projectTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D05E63B62400196000E22079 /* Thesis_projectTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Thesis_projectTests.swift; sourceTree = "<group>"; };
 		D05E63B82400196000E22079 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D0B3A6C524B5CE7C00712482 /* DrawableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawableView.swift; sourceTree = "<group>"; };
+		D0B3A6C724B5D39200712482 /* DigitClassifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DigitClassifier.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +93,8 @@
 				D05E63A82400195F00E22079 /* Assets.xcassets */,
 				D05E63AA2400195F00E22079 /* LaunchScreen.storyboard */,
 				D05E63AD2400196000E22079 /* Info.plist */,
+				D0B3A6C524B5CE7C00712482 /* DrawableView.swift */,
+				D0B3A6C724B5D39200712482 /* DigitClassifier.swift */,
 			);
 			path = "Thesis-project";
 			sourceTree = "<group>";
@@ -205,7 +211,9 @@
 			files = (
 				D05E63A42400195D00E22079 /* ViewController.swift in Sources */,
 				D05E63A02400195D00E22079 /* AppDelegate.swift in Sources */,
+				D0B3A6C624B5CE7C00712482 /* DrawableView.swift in Sources */,
 				D05E63A22400195D00E22079 /* SceneDelegate.swift in Sources */,
+				D0B3A6C824B5D39200712482 /* DigitClassifier.swift in Sources */,
 				D052E07A249761DC004FABB7 /* MNISTClassifier.mlmodel in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
